@@ -2,9 +2,17 @@ import {
     isNumber,
     allDifferentNumber,
     numberRange,
-    checkRow
+    checkRow,
 } from './Maoua_Ramzi_test_javascript_algo_ex2.js'
 
+import { convertLineToTable,
+        createGrid,
+        displayGrid 
+} from './Maoua_Ramzi_test_javascript_algo_ex1.js'
+
+import {
+    array_number
+} from './Javascript_test_je1.js'
 
 //A function that calls checkRow function for every Row
 function checkGridRows (grid) {
@@ -42,3 +50,49 @@ function checkGridColumns (grid) {
     }
     return true
 }
+
+
+
+//Create a table conatining the first detected anomalies in rows, columns in a HTML Document
+function displayAnomaly(grid) {
+    
+    //Our sudoku grid on page
+    displayGrid(grid)
+
+    //create a HTML table
+    let anomalyTable = document.createElement('table');
+
+    //Customize a bit with Bootstrap for better View
+    anomalyTable.classList.add('table', 'table-bordered','w-auto','mx-auto','my-5')
+    let anomalyResult =[] ;
+
+    //Check Rows
+    if (checkGridRows(grid) !== true ){
+        anomalyResult.push(checkGridRows(grid));
+    }
+
+    //Check Columns
+    if (checkGridColumns(grid) !== true){
+        anomalyResult.push(checkGridColumns(grid));
+    }
+
+    //If there is no mistake, we input a message
+    if (anomalyResult == []){
+        anomalyResult.push("No mistake")
+    }
+
+    for (let i=0 ; i<anomalyResult.length; i++){
+        let row = anomalyResult[i];
+        let anomalyRow = anomalyTable.insertRow();
+        for (let j=0 ; j<row.length; j++){
+            let cell = row[j];
+            let anomalyCell = anomalyRow.insertCell();
+            anomalyCell.textContent = cell ;
+        }
+    }
+    //Display Our grid on the page (body)
+    document.body.appendChild(anomalyTable);
+
+}
+
+displayAnomaly(convertLineToTable(array_number))
