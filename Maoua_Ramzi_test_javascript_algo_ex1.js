@@ -1,8 +1,7 @@
-import {array_number} from'./Javascript_test_je1.js';
 
 
 //Create an empty 2d array (table) of dimension 9x9
-export const createGrid = () => {
+ const createGrid = () => {
     let rows = new Array(9);
     console.log(rows)
     for (let i =0; i< rows.length; i++){
@@ -13,7 +12,7 @@ export const createGrid = () => {
 
 let to_verify = createGrid()
 
-export const convertLineToTable = (lineGrid) => {
+const convertLineToTable = (lineGrid) => {
     let result = new Array(9);
     for (let i=0; i< result.length; i++){
         result[i] = lineGrid[i].split(" ").map(cell => parseInt(cell));
@@ -23,7 +22,7 @@ export const convertLineToTable = (lineGrid) => {
 
 
 //Create a grid in a HTML Document
-export function displayGrid (grid) {
+function displayGrid (grid) {
     //create a HTML table
     let sudokuGrid = document.createElement('table');
     //Customize a bit with Bootstrap for better View
@@ -43,5 +42,3 @@ export function displayGrid (grid) {
     document.body.appendChild(sudokuGrid)
 
 }
-
-displayGrid(convertLineToTable(array_number))

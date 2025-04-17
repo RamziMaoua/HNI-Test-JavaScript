@@ -1,18 +1,3 @@
-import {
-    isNumber,
-    allDifferentNumber,
-    numberRange,
-    checkRow,
-} from './Maoua_Ramzi_test_javascript_algo_ex2.js'
-
-import { convertLineToTable,
-        createGrid,
-        displayGrid 
-} from './Maoua_Ramzi_test_javascript_algo_ex1.js'
-
-import {
-    array_number
-} from './Javascript_test_je1.js'
 
 //A function that calls checkRow function for every Row
 function checkGridRows (grid) {
